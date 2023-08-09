@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Social Network Smoke Suite" verbose="4">
+
+    <listeners>
+        <listener class-name="listeners.ExtentReportListener"/>
+        <listener class-name="listeners.AllureReportListener"/>
+    </listeners>
+
+    <test name="social network" parallel="true"
+          thread-count="5">
+        <classes>
+            <class name="com.social.tests.CommentTest">
+            <methods>
+                <include name="verifyUserAbleToCommentTest"/>
+            </methods>
+        </class>
+            <class name="com.social.tests.UserTest">
+                <methods>
+                    <include name="verifySingleUserDetailTest"/>
+                </methods>
+            </class>
+            <class name="com.social.tests.PostTest">
+                <methods>
+                    <include name="verifyUserAbleToRetrieveAllPostTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
+

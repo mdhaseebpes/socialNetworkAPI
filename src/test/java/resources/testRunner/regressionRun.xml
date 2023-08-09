@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Social Network Regression Suite" verbose="4">
+
+    <listeners>
+        <listener class-name="listeners.ExtentReportListener"/>
+        <listener class-name="listeners.AllureReportListener"/>
+    </listeners>
+
+    <test name="social network" parallel="true"
+          thread-count="5">
+        <classes>
+            <class name="com.social.tests.CommentTest"/>
+            <class name="com.social.tests.PostTest"/>
+            <class name="com.social.tests.UserTest"/>
+        </classes>
+    </test>
+</suite>
+

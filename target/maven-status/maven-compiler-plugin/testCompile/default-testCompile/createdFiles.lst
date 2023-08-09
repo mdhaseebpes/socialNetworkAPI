@@ -1,0 +1,13 @@
+com/social/tests/UserTest.class
+com/social/pojo/MainPost.class
+com/social/pojo/users/User.class
+com/social/tests/CommentTest.class
+com/social/modules/UserModule.class
+com/social/tests/PostTest.class
+com/social/pojo/users/Address.class
+com/social/tests/BaseTest.class
+com/social/pojo/users/Company.class
+com/social/pojo/MainComments.class
+com/social/pojo/users/Geo.class
+com/social/modules/CommentsModule.class
+com/social/modules/PostModule.class
