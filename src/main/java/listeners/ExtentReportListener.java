@@ -43,11 +43,11 @@ public class ExtentReportListener implements ITestListener {
 		
 		extentReports = new ExtentReports();
 		ExtentSparkReporter reporter = new ExtentSparkReporter(OUTPUT_FOLDER + FILE_NAME);
-		reporter.config().setDocumentTitle("CreatorsAPIReport");
-		reporter.config().setReportName("API Creators Test Results");
+		reporter.config().setDocumentTitle("API Report");
+		reporter.config().setReportName("API Test Results");
 		reporter.config().setTheme(Theme.DARK);
 		extentReports.attachReporter(reporter);
-		extentReports.setSystemInfo("Team", "Creators Automation");
+		extentReports.setSystemInfo("Team", "Gravity");
 		extentReports.setSystemInfo("ENV NAME", "QA");
 		return extentReports;
 	}
