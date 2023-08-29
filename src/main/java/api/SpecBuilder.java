@@ -54,20 +54,27 @@ public class SpecBuilder {
      * @return : boolean true or false
      * @author : Mohammed Haseeb
      */
-    public static  boolean responseTimeValidation(Response response , String responseTime){
-        long expectedResponse  = Long.parseLong(responseTime);
-        boolean flag = false;
+   public static boolean responseTimeValidation(Response response, String responseTime) {
         try {
-            ValidatableResponse actualResponseTime = response.then();
-            long millSeconds  = TimeUnit.SECONDS.toMillis(expectedResponse);
-            actualResponseTime.time(Matchers.lessThan(millSeconds));
-            logger.info("Response time in seconds : " + actualResponseTime.extract().timeIn(TimeUnit.SECONDS));
-            flag = true;
-        }catch (Exception ex){
-            flag =false;
-            logger.info("response time is more than "+responseTime+" seconds");
+            long expectedResponseInMillSec = TimeUnit.SECONDS.toMillis(Long.parseLong(responseTime));
+
+            ValidatableResponse actualResponse = response.then();
+            long actualResponseInMillSec = actualResponse.extract().timeIn(TimeUnit.MILLISECONDS);
+            if (actualResponseInMillSec < expectedResponseInMillSec) {
+                logger.info("Response time in milliseconds: " + actualResponseInMillSec);
+                return true;
+            } else {
+                logger.info("actual Response time in milli seconds : " + actualResponseInMillSec +
+                        "expected response time in milli seconds :" + expectedResponseInMillSec);
+                return false;
+            }
+        } catch (NumberFormatException ex) {
+            logger.error("Invalid response time format: " + responseTime, ex);
+            return false;
+        } catch (Exception ex) {
+            logger.error("An error occurred during response time validation", ex);
+            return false;
         }
-        return flag;
     }
 
 }
